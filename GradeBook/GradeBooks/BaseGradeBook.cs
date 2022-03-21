@@ -114,7 +114,6 @@ namespace  GradeBook.GradeBooks
             {
                 if (student.Type == StudentType.Honors || student.Type == StudentType.DualEnrolled)
                     student.GPA += 1;
-
             }
 
 
