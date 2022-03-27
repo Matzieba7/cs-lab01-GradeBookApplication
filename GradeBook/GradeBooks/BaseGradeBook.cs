@@ -111,11 +111,12 @@ namespace  GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
-            foreach (var student in Students)
+
+            if (studentType == StudentType.Honors || studentType == StudentType.DualEnrolled)
             {
-                if (student.Type == StudentType.Honors || student.Type == StudentType.DualEnrolled)
-                    student.GPA += 1;
+                
             }
+
 
      
 
