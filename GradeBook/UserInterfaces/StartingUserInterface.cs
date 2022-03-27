@@ -6,6 +6,9 @@ namespace GradeBook.UserInterfaces
     public static class StartingUserInterface
     {
         public static bool Quit = false;
+
+        public static bool IsWeighted { get; set; }
+
         public static void CommandLoop()
         {
             while (!Quit)
@@ -34,13 +37,12 @@ namespace GradeBook.UserInterfaces
         public static void CreateCommand(string command)
         {
             var parts = command.Split(' ');
-            if (parts.Length != 3)
+            if (parts.Length != 4)
             {
-                Console.WriteLine("Command not valid, Create requires a name and type of gradebook.");
+                Console.WriteLine("Command not valid, Create requires a name, type of gradebook, if it's weighted (true / false).");
                 return;
             }
             var name = parts[1];
-            
 
             //BaseGradeBook gradeBook = new BaseGradeBook(name);
             Console.WriteLine("Created gradebook {0}.", name);
@@ -50,11 +52,11 @@ namespace GradeBook.UserInterfaces
 
             if (parts[2] == "standard")
             {
-                gradeBook1 = new StandardGradeBook(name);
+                gradeBook1 = new StandardGradeBook(name, IsWeighted);
             }
             if (parts[2] == "ranked")
             {
-                gradeBook1 = new RankedGradeBook(name);
+                gradeBook1 = new RankedGradeBook(name, IsWeighted);
             }
             else
             {
